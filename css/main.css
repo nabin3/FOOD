@@ -1,0 +1,277 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+/* custom properties(like variable)*/
+:root {
+    --leading: 2em; /* leading is variable name */
+}
+
+body{
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+}
+
+.hero-bg {
+    background: #307D99 url('../images/bg.jpg');
+    background-position: 12% 90%;
+    color: white;
+    text-align: center;
+    padding-bottom: 4em;
+}
+
+header {
+    padding: 1em 0;
+}
+
+.hero-bg a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+section {
+    margin: 0 1em;
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin: 2rem 0 1.2rem
+}
+
+h1 span {
+    text-transform: uppercase;
+    display: block;
+    font-size: 1.4rem;
+    z-index: 1;
+    position: relative;
+}
+
+h1 span::before {
+    content: '';
+    position: absolute;
+    background: #00BFFF;
+    width: 3em;
+    height: .4em;
+    bottom: 0;
+    z-index: -1;
+    margin-left: -.3em;
+}
+
+.hero-bg p {
+    font-weight: bold;
+    margin: 0 1em 3em
+}
+
+.form-container {
+    background-color: white;
+    margin: 2em -1em 0;
+    padding: 2em;
+}
+
+label {
+    color: #2D7D98;
+    font-weight: bold;
+    font-size: 1.2em;
+    display: block;
+    margin-bottom: 1em;
+}
+
+input[type=text] {
+    border: 1px solid #707070;
+    width: 100%;
+    padding: 1em;
+    box-sizing: border-box;
+    border-radius: .5em;
+    margin-top: 1.2em;
+}
+
+.form-container p {
+    color: gray;
+    margin: .3em 0 1.5em;
+    font-weight: normal;
+    font-size: .9em;
+}
+
+input[type=button] {
+    background-color: #F89104;
+    border: none;
+    color: white;
+    font-weight: bold;
+    font-size: 1.3em;
+    padding: 1em 0;
+    width: 100%;
+    border-radius: 0.5em;
+    cursor: pointer;
+}
+
+input[type=button]:hover {
+    background-color: #ca7a09ea;
+}
+
+.authentic {
+    margin: 0;
+}
+
+img {
+    width: 100%;
+}
+
+.right-col {
+    text-align: center;
+    margin: 1em 3em;
+}
+
+h2 {
+    text-transform: uppercase;
+    position: relative;
+}
+
+h2::before {
+    content: '';
+    position: absolute;
+    background: #00BFFF;
+    width: 3em;
+    height: .4em;
+    bottom: 0;
+    z-index: -1;
+    margin-left: -.3em;
+}
+
+p {
+    line-height: var(--leading); /* using our --leading variable */
+}
+
+/* media query, our web page keeps a condition on a certain value of width, upon meeting this condition some change will occur in our web page */
+@media (min-width: 730px) {     /* when you desgine for mobile first always use min-width first(recomended) */
+    section {
+        margin: 0 4em;
+    }
+
+    .form-container {
+        margin: 2em -4em 0;
+    }
+}
+
+.overlay {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, .9); /* 4th argument is for transparencsing */
+    color: white;
+    z-index: 1;
+    place-content: center;  /* place content and grid works together */
+    display: none;
+    /*opacity: 0; /* for hiding, because by difault this overlay div is always presenr, we want to see it ony when we click on find food now button */
+}
+
+.animate-overlay {
+    animation: overlay 3s forwards;
+}
+
+@media (min-width: 930px) {
+    .hero-bg {
+        text-align: left;
+    }
+
+    .hero-bg p {
+        margin: 0 0 3em;
+    }
+
+    .hero-bg section {
+        width: 65%;
+    }
+
+    .form-container {
+        margin: 2em 0 0;
+        padding: 2em;
+        border-radius: .5em;    /* for rounded corner */
+        box-shadow: 10px 10px 10px rgb(0, 0, 0, .3); /* for shadow affect,first value for x axis, 2nd for y axis, 3rd for blur amount, rgb function for color, 4th argument in rgb function is for opacity */
+    }
+
+    form {
+        display: flex;
+    }
+
+    .form-left {
+        width: 70%;
+    }
+
+    label {
+        margin: 0;
+    }
+
+    input[type=button] {
+        height: fit-content;
+        font-size: 1.1em;
+        margin-left: 1em;
+        margin-top: 2.2em;
+        padding: .7em 0;
+        width: 30%;
+    }
+
+    .hero-bg p {
+        margin-bottom: 0;
+    }
+
+    section.authentic {
+        display: grid;
+        grid-template-columns: repeat(2, 50%);
+        grid-template-areas:
+            "bowl content";
+    }
+
+    .right-col {
+        grid-area: content;
+        padding: 10%;
+        text-align: left;
+        align-self: center; /* no matter how high you browser, your paragraph will allign itelf perfectly */
+    }
+
+    img {
+        grid-area: bowl;
+    }
+
+    h2 {
+        margin: 0em;
+    }
+}
+
+/* animation */
+
+.top {
+    animation: fadeIn 2s forwards; 
+}
+
+@keyframes fadeIn {
+    /* for two stem animation we use from and two */
+    from {
+        opacity: 0; /* from hiding */
+        transform: translateY(-2em); /* from up */
+    }
+    to {
+        opacity: 1; /* to appear */
+        transform: translateY(0);   /* to downwards move*/
+    }
+}
+
+@keyframes overlay {
+    /* here we will use multistep animation, we do this using percentage */
+    0% {
+       opacity: 0; 
+    }
+
+    /* from 0% to 30% it will fade in */
+    30% {
+        opacity: 1;
+    }
+    
+    /* 30% to 70% it will be stay */
+    70% {
+        opacity: 1;
+    }
+
+    /* on 70 % to 100 % it will fade out */
+    100% {
+        opacity: 0;
+    }
+}
